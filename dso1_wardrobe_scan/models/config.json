@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "encoder": {
+    "model_id": "patrickjohncyh/fashion-clip",
+    "dim": 512,
+    "l2_normalised": true,
+    "similarity": "cosine"
+  },
+  "classes": [
+    "blazer",
+    "blouse_top",
+    "dress",
+    "hat",
+    "hoodie",
+    "longsleeve",
+    "outerwear",
+    "polo",
+    "shirt",
+    "shoes",
+    "shorts",
+    "skirt",
+    "t_shirt",
+    "trousers"
+  ],
+  "subcategory_to_category": {
+    "t_shirt": "tops",
+    "shorts": "bottoms",
+    "shirt": "tops",
+    "shoes": "footwear",
+    "blouse_top": "tops",
+    "trousers": "bottoms",
+    "skirt": "bottoms",
+    "hat": "accessories",
+    "polo": "tops",
+    "hoodie": "tops",
+    "longsleeve": "tops",
+    "dress": "one_piece",
+    "outerwear": "outerwear",
+    "blazer": "outerwear"
+  },
+  "colours": [
+    "black",
+    "white",
+    "grey",
+    "beige",
+    "brown",
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "pink",
+    "purple",
+    "orange"
+  ],
+  "patterns": [
+    "solid",
+    "striped",
+    "checked",
+    "floral",
+    "polka_dot",
+    "printed"
+  ],
+  "logit_scale": 100.0,
+  "thresholds": {
+    "category_auto": 0.8,
+    "category_confirm": 0.5,
+    "colour_auto": 0.8,
+    "pattern_auto": 0.8,
+    "note": "placeholders from catalogue/val calibration; recheck on own photos"
+  }
+}
