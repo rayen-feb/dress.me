@@ -32,6 +32,7 @@ html{scroll-behavior:smooth}
 body{min-width:320px;margin:0;background:var(--canvas);color:var(--ink);font:16px/1.55 var(--sans)}
 a{color:inherit}
 button,select{font:inherit}
+input,textarea{font:inherit}
 .skip-link{position:fixed;z-index:10;top:8px;left:8px;padding:10px 14px;transform:translateY(-160%);background:var(--surface);color:var(--ink)}
 .skip-link:focus{transform:translateY(0)}
 .app-header{position:relative;z-index:2;border-bottom:1px solid var(--line);background:var(--surface)}
@@ -68,12 +69,73 @@ h3{margin-bottom:8px;font:600 19px/1.25 var(--serif)}
 #review{position:relative;margin-top:18px;padding:24px 16px 16px;border:1px dashed var(--line);border-top:4px solid var(--accent);background:var(--canvas)}
 #review::before{position:absolute;top:8px;left:50%;width:10px;height:10px;border:1px solid var(--line);border-radius:50%;background:var(--surface);content:"";transform:translateX(-50%)}
 #preview{display:block;width:100%;max-height:340px;object-fit:contain;background:var(--surface);margin:0 auto 16px}
+.similarity-results{margin-top:16px;padding:14px;border:1px solid var(--line);background:var(--surface)}
+.similarity-results h3{margin-bottom:6px}
+.similarity-results>p{margin-bottom:12px;color:var(--muted);font-size:14px}
+.similarity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px}
+.similarity-card{display:flex;min-width:0;gap:12px;padding:10px;border:1px solid var(--line);background:var(--canvas)}
+.similarity-card img{width:64px;height:80px;flex:none;object-fit:cover;background:var(--surface)}
+.similarity-card b,.similarity-card span{display:block}
+.similarity-card span{margin-top:4px;color:var(--muted);font-size:13px}
 .banner{margin:0 0 16px;padding:12px 14px;border-left:4px solid var(--accent);background:var(--surface)}
 .banner.warn{border-color:#775000}
 .banner.bad{border-color:#963b3e}
 #fields>div,.field{margin-top:14px;padding:14px;border:1px solid var(--line);background:var(--surface)}
 label{display:block;margin:0 0 5px;font-weight:650}
 select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--ink)}
+input,textarea{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--ink)}
+textarea{min-height:112px;resize:vertical}
+.event-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.event-form .wide{grid-column:1/-1}
+.event-form .field{margin:0}
+.event-form .row{grid-column:1/-1;margin-top:0}
+.event-results{display:grid;gap:14px;margin-top:20px}
+.event-summary,.weather-summary,.outfit-card{padding:18px;border:1px solid var(--line);background:var(--surface)}
+.weather-summary{background:var(--canvas)}
+.outfit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.outfit-card h3{margin-bottom:6px}
+.outfit-pieces{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:10px;margin-top:12px}
+.outfit-piece{min-width:0}
+.outfit-piece img{display:block;width:100%;height:130px;object-fit:cover;background:var(--canvas)}
+.outfit-piece span{display:block;margin-top:5px;color:var(--muted);font-size:13px}
+.external-link{display:inline-flex;min-height:44px;margin-top:12px;padding:9px 13px;align-items:center;border:1px solid var(--accent);color:var(--accent);font-weight:650;text-decoration:none}
+.external-link:hover{background:var(--canvas)}
+.shopping-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:18px}
+.shopping-advice-list,.shopping-list{display:grid;gap:10px}
+.shopping-advice-card,.shopping-list-item{padding:14px;border:1px solid var(--line);background:var(--surface)}
+.shopping-advice-card p{margin:6px 0 0;color:var(--muted)}
+.shopping-list-item{display:flex;align-items:flex-start;gap:10px}
+.shopping-list-item .shopping-check{width:20px;min-height:20px;margin:2px 0 0;flex:none;accent-color:var(--accent)}
+.shopping-list-item.done .shopping-item-copy{text-decoration:line-through;color:var(--muted)}
+.shopping-item-copy{min-width:0;flex:1}
+.shopping-item-copy span{display:block;color:var(--muted);font-size:14px}
+.shopping-list-item button{min-height:40px;padding:6px 10px}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);align-items:start;gap:18px}
+.calendar-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:16px}
+.calendar-toolbar h2{margin:0 auto}
+.calendar-toolbar .btn{min-height:40px;padding:7px 10px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.calendar-weekday{padding:7px 2px;color:var(--muted);font-size:12px;font-weight:700;text-align:center}
+.calendar-day{display:flex;min-width:0;min-height:92px;padding:7px;flex-direction:column;align-items:flex-start;gap:4px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;cursor:pointer}
+.calendar-day:hover,.calendar-day.selected{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.calendar-day.other-month{color:var(--muted);background:var(--canvas)}
+.calendar-day.today .calendar-day-number{color:var(--accent);font-weight:800}
+.calendar-day-number{font-size:14px}
+.calendar-day-event{display:block;width:100%;overflow:hidden;color:var(--accent);font-size:11px;line-height:1.25;text-overflow:ellipsis;white-space:nowrap}
+.calendar-agenda{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.calendar-agenda h3{margin-bottom:10px}
+.calendar-event-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.calendar-event-row:first-child{border-top:0}
+.calendar-event-copy{min-width:0;flex:1}
+.calendar-event-copy strong,.calendar-event-copy span{display:block}
+.calendar-event-copy span{color:var(--muted);font-size:13px}
+.calendar-actions{display:flex;flex-wrap:wrap;gap:6px}
+.calendar-actions .btn{min-height:40px;padding:6px 10px;font-size:13px}
+.calendar-form{display:grid;gap:10px}
+.calendar-form .field{margin:0;padding:10px}
+.calendar-form input,.calendar-form select,.calendar-form textarea{min-height:42px}
+.calendar-form textarea{min-height:80px}
+.calendar-form .row{margin-top:4px}
 .hint{margin-top:5px;color:var(--muted);font-size:14px;line-height:1.45}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
 .chip,.chips button{display:inline-flex;min-height:44px;padding:7px 12px;align-items:center;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--ink);font-size:14px}
@@ -131,14 +193,17 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
 }
 @media(max-width:760px){
   .topbar{min-height:66px}
-  .primary-nav{position:fixed;z-index:5;right:0;bottom:0;left:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding:6px max(4px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));border-top:1px solid var(--line);background:var(--surface)}
+  .primary-nav{position:fixed;z-index:5;right:0;bottom:0;left:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;padding:6px max(4px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));border-top:1px solid var(--line);background:var(--surface)}
   .nav-link{min-width:0;min-height:52px;padding:4px 2px;flex-direction:column;justify-content:center;gap:2px;font-size:10px;line-height:1.2;white-space:normal;text-align:center}
   .nav-link svg{width:19px;height:19px}
   .nav-link[aria-current="page"]{box-shadow:inset 0 2px var(--accent)}
   main{min-height:calc(100vh - 138px);padding:24px 16px 96px}
   .workspace-grid,.module-layout{grid-template-columns:minmax(0,1fr);gap:18px}
+  .shopping-layout,.calendar-layout{grid-template-columns:minmax(0,1fr)}
   .wardrobe-list{order:2}
   .about-grid{grid-template-columns:minmax(0,1fr)}
+  .event-form{grid-template-columns:minmax(0,1fr)}
+  .event-form .wide,.event-form .row{grid-column:auto}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .app-footer{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
 }
@@ -188,6 +253,10 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4 4 6l-2 5 4 2 2-3v10h12V10l2 3 4-2-2-5-4-2-3 3h-4L8 4Z"/></svg>
         <span>Outfits</span>
       </a>
+      <a class="nav-link" href="#calendar" data-nav="calendar">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M16 3v4M8 3v4M3 10h18M8 14h2m4 0h2m-8 3h2"/></svg>
+        <span>Calendar</span>
+      </a>
       <a class="nav-link" href="#shopping" data-nav="shopping">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1 12H5L4 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
         <span>Shopping</span>
@@ -204,7 +273,7 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
     <div class="section-heading">
       <div>
         <h1 id="wardrobe-title">My wardrobe</h1>
-        <p class="lede">Photograph one garment. Check the suggestions, make any corrections, then save it.</p>
+        <p class="lede">Photograph one garment, review its details and possible matches, then decide whether to save it.</p>
       </div>
     </div>
     <div class="workspace-grid">
@@ -218,6 +287,7 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
         <div id="review" hidden>
           <img id="preview" alt="Your photo">
           <div id="banner" class="banner" role="status" aria-live="polite"></div>
+          <div id="scan-duplicates" hidden></div>
           <div id="fields"></div>
           <div class="row">
             <button class="btn" id="save">Save to wardrobe</button>
@@ -244,70 +314,185 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
         <h1 id="duplicates-title">Duplicate detection</h1>
         <p class="lede">Spot when a new garment is very similar to one already in your wardrobe.</p>
       </div>
-      <span class="badge next">Next</span>
+      <span class="badge next">Available</span>
     </div>
     <div class="module-layout">
       <div class="module-copy">
-        <span class="badge next">Planned module</span>
+        <span class="badge next">Available</span>
         <h2>Compare before you add</h2>
-        <p>This module will use the image embedding produced by the scan to compare a new garment with saved garments.</p>
-        <button class="btn" type="button" disabled>Duplicate check is planned</button>
+        <p>Every new scan is compared with garments already saved. Check possible visual matches before you decide whether to add it.</p>
+        <a class="btn" href="#wardrobe">Scan a garment</a>
       </div>
       <div class="module-notes">
-        <div class="status-note"><h2>What it needs</h2><div class="field"><p>Embeddings for garments already saved in the wardrobe.</p></div><div class="field"><p>The new scan’s image embedding.</p></div></div>
-        <div class="empty-state"><h3>No comparisons yet</h3><p>Duplicate checking is planned and is not connected in this demo.</p></div>
+        <div class="status-note"><h2>How it works</h2><p>The scan compares image embeddings and shows the closest matches. Similarity is a visual clue, not proof that two garments are duplicates.</p></div>
+        <div id="duplicates-root" class="module-root" aria-live="polite"></div>
       </div>
     </div>
-    <div id="duplicates-root" class="module-root" aria-label="Planned duplicate detection integration point"></div>
-    <!-- PLANNED: DSO 2 endpoint, not implemented: GET /api/duplicates/{item_id} -> [{item_id, similarity, image_url}]; receives the new scan embedding and saved garment embeddings. -->
   </section>
 
   <section id="section-outfits" class="app-section" data-module="dso3" aria-labelledby="outfits-title" hidden>
     <div class="section-heading">
       <div>
         <h1 id="outfits-title">Outfit recommendation</h1>
-        <p class="lede">Suggest outfits from garments saved in your wardrobe.</p>
+        <p class="lede">Tell us about your event. We’ll consider your wardrobe, the forecast and the dress code.</p>
       </div>
-      <span class="badge">Planned</span>
+      <span class="badge next">Available</span>
     </div>
-    <div class="module-layout">
-      <div class="module-copy">
-        <span class="badge">Planned module</span>
-        <h2>Build from what you own</h2>
-        <p>This module will use garment type, colour and pattern to suggest outfits from your saved wardrobe.</p>
-        <button class="btn" type="button" disabled>Outfit suggestions are planned</button>
+    <form id="outfit-form" class="panel event-form">
+      <div class="field wide">
+        <label for="event-description">What’s the event?</label>
+        <textarea id="event-description" required minlength="3" maxlength="500" placeholder="Example: Mariage de ma cousine samedi, outdoor, tenue élégante. / عرس بنت عمي السبت في الهواء الطلق."></textarea>
+        <div class="hint">Describe the occasion and any details. English, French, Tunisian Arabic and Arabizi keywords are recognized.</div>
       </div>
-      <div class="module-notes">
-        <div class="status-note"><h2>What it needs</h2><p>Saved garment details from the wardrobe module:</p><div class="chips"><span class="chip">Type</span><span class="chip">Colour</span><span class="chip">Pattern</span></div></div>
-        <div class="empty-state"><h3>No outfits to show</h3><p>Recommendations are planned; this screen has no sample outfits.</p></div>
+      <div class="field">
+        <label for="event-location">City for the weather forecast</label>
+        <input id="event-location" value="Tunis" required minlength="2" maxlength="100" autocomplete="address-level2">
       </div>
+      <div class="field">
+        <label for="event-date">Event date</label>
+        <input id="event-date" type="date" required>
+      </div>
+      <div class="field">
+        <label for="event-time">Start time (optional)</label>
+        <input id="event-time" type="time">
+      </div>
+      <div class="field">
+        <label for="event-dress-code">Dress code</label>
+        <select id="event-dress-code">
+          <option value="auto">Detect from event details</option>
+          <option value="casual">Casual</option>
+          <option value="smart_casual">Smart casual</option>
+          <option value="formal">Formal</option>
+          <option value="black_tie">Black tie</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="event-setting">Setting</label>
+        <select id="event-setting">
+          <option value="auto">Detect from event details</option>
+          <option value="indoors">Indoors</option>
+          <option value="outdoors">Outdoors</option>
+        </select>
+      </div>
+      <div class="row wide">
+        <button class="btn" id="recommend-outfits" type="submit">Recommend outfits</button>
+      </div>
+      <p class="hint wide">Your event description stays on this app. The city is sent to Open-Meteo for weather; Pinterest receives only general occasion and style keywords if you open its link.</p>
+    </form>
+    <p id="outfit-error" class="banner bad" role="alert" hidden></p>
+    <div id="outfit-results" class="event-results" aria-live="polite">
+      <div class="empty-state"><h3>Ready when you are</h3><p>Enter your event details to get weather-aware ideas using clothes in your wardrobe.</p></div>
     </div>
-    <div id="outfits-root" class="module-root" aria-label="Planned outfit recommendation integration point"></div>
-    <!-- PLANNED: DSO 3 endpoint, not implemented: POST /api/outfits/recommendations -> recommendations; receives saved garments with {item_id, subcategory, colour, pattern}. -->
+  </section>
+
+  <section id="section-calendar" class="app-section" aria-labelledby="calendar-title" hidden>
+    <div class="section-heading">
+      <div>
+        <h1 id="calendar-title">Calendar</h1>
+        <p class="lede">Keep track of events and get outfit ideas for what’s coming up.</p>
+      </div>
+      <span class="badge next">Available</span>
+    </div>
+    <div class="calendar-layout">
+      <section class="panel" aria-label="Monthly calendar">
+        <div class="calendar-toolbar">
+          <button class="btn btn-ghost ghost" id="calendar-prev" type="button" aria-label="Previous month">‹</button>
+          <h2 id="calendar-month-label"></h2>
+          <button class="btn btn-ghost ghost" id="calendar-next" type="button" aria-label="Next month">›</button>
+          <button class="btn btn-ghost ghost" id="calendar-today" type="button">Today</button>
+          <button class="btn" id="calendar-new-event" type="button">Add event</button>
+        </div>
+        <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="Events by date"></div>
+        <div class="calendar-agenda">
+          <h3 id="calendar-agenda-title"></h3>
+          <div id="calendar-agenda-events"></div>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="calendar-form-title">
+        <h2 id="calendar-form-title">Add event</h2>
+        <form id="calendar-event-form" class="calendar-form">
+          <input id="calendar-event-id" type="hidden">
+          <div class="field">
+            <label for="calendar-event-name">Event name</label>
+            <input id="calendar-event-name" required maxlength="120" placeholder="Birthday, wedding, meeting…">
+          </div>
+          <div class="field">
+            <label for="calendar-event-date">Date</label>
+            <input id="calendar-event-date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="calendar-event-time">Time (optional)</label>
+            <input id="calendar-event-time" type="time">
+          </div>
+          <div class="field">
+            <label for="calendar-event-location">Location (optional)</label>
+            <input id="calendar-event-location" maxlength="100" placeholder="City">
+          </div>
+          <div class="field">
+            <label for="calendar-event-description">Notes (optional)</label>
+            <textarea id="calendar-event-description" maxlength="500" placeholder="Occasion details or dress code…"></textarea>
+          </div>
+          <div class="field">
+            <label for="calendar-event-dress-code">Dress code</label>
+            <select id="calendar-event-dress-code">
+              <option value="auto">Detect from event details</option>
+              <option value="casual">Casual</option>
+              <option value="smart_casual">Smart casual</option>
+              <option value="formal">Formal</option>
+              <option value="black_tie">Black tie</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="calendar-event-setting">Setting</label>
+            <select id="calendar-event-setting">
+              <option value="auto">Detect from event details</option>
+              <option value="indoors">Indoors</option>
+              <option value="outdoors">Outdoors</option>
+            </select>
+          </div>
+          <p id="calendar-error" class="banner bad" role="alert" hidden></p>
+          <div class="row">
+            <button class="btn" id="calendar-save" type="submit">Save event</button>
+            <button class="btn btn-ghost ghost" id="calendar-cancel" type="button" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </section>
+    </div>
   </section>
 
   <section id="section-shopping" class="app-section" data-module="dso4" aria-labelledby="shopping-title" hidden>
     <div class="section-heading">
       <div>
-        <h1 id="shopping-title">Shopping advice</h1>
-        <p class="lede">Advise what may be missing or worth buying, based on the wardrobe.</p>
+        <h1 id="shopping-title">Shopping</h1>
+        <p class="lede">Get ideas based on your wardrobe and keep track of what you want to buy.</p>
       </div>
-      <span class="badge">Planned</span>
+      <span class="badge next">Available</span>
     </div>
-    <div class="module-layout">
-      <div class="module-copy">
-        <span class="badge">Planned module</span>
-        <h2>Start with your wardrobe</h2>
-        <p>This module will use the garments you have saved to advise what may be missing or worth buying.</p>
-        <button class="btn" type="button" disabled>Shopping advice is planned</button>
-      </div>
-      <div class="module-notes">
-        <div class="status-note"><h2>What it needs</h2><p>Saved garment details from the wardrobe, including:</p><div class="chips"><span class="chip">Type</span><span class="chip">Colour</span><span class="chip">Pattern</span></div></div>
-        <div class="empty-state"><h3>No advice to show</h3><p>Shopping advice is planned and is not available in this demo.</p></div>
-      </div>
+    <div class="shopping-layout">
+      <section class="panel" aria-labelledby="shopping-advice-heading">
+        <h2 id="shopping-advice-heading">Wardrobe suggestions</h2>
+        <p class="hint">Suggestions are based on the categories and colours in your saved wardrobe.</p>
+        <div id="shopping-root" class="shopping-advice-list" aria-live="polite"></div>
+      </section>
+      <section class="panel" aria-labelledby="shopping-list-heading">
+        <h2 id="shopping-list-heading">My shopping list</h2>
+        <form id="shopping-form" class="calendar-form">
+          <div class="field">
+            <label for="shopping-title-input">Item</label>
+            <input id="shopping-title-input" required maxlength="120" placeholder="What do you want to buy?">
+          </div>
+          <div class="field">
+            <label for="shopping-detail-input">Note (optional)</label>
+            <input id="shopping-detail-input" maxlength="500" placeholder="Colour, style, or other details">
+          </div>
+          <div class="row">
+            <button class="btn" type="submit">Add to list</button>
+          </div>
+        </form>
+        <p id="shopping-error" class="banner bad" role="alert" hidden></p>
+        <div id="shopping-list" class="shopping-list" aria-live="polite"></div>
+      </section>
     </div>
-    <div id="shopping-root" class="module-root" aria-label="Planned shopping advice integration point"></div>
-    <!-- PLANNED: DSO 4 endpoint, not implemented: GET /api/shopping/advice -> advice; receives saved wardrobe garments and their subcategory, colour and pattern. -->
   </section>
 
   <section id="section-about" class="app-section" data-module="about" aria-labelledby="about-title" hidden>
@@ -319,12 +504,13 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
     </div>
     <div class="about-grid">
       <section class="about-card" aria-labelledby="modules-title">
-        <h2 id="modules-title">Four modules</h2>
+        <h2 id="modules-title">Wardrobe tools</h2>
         <ul class="module-list">
           <li><strong>Digital Wardrobe Scan <span class="badge next">Done</span></strong><p>Photograph one garment, get suggested type, colour and pattern, check and correct it, then save it.</p></li>
-          <li><strong>Duplicate detection <span class="badge">Next</span></strong><p>Spot when a new garment is very similar to one already saved.</p></li>
-          <li><strong>Outfit recommendation <span class="badge">Planned</span></strong><p>Suggest outfits from saved garments using type, colour and pattern.</p></li>
-          <li><strong>Purchase recommendation <span class="badge">Planned</span></strong><p>Advise what may be missing or worth buying based on the wardrobe.</p></li>
+          <li><strong>Duplicate detection <span class="badge next">Available</span></strong><p>Compare a new scan with saved garments before deciding whether to add it.</p></li>
+          <li><strong>Outfit recommendation <span class="badge next">Available</span></strong><p>Suggest looks for an event using your wardrobe, event details, weather and Pinterest inspiration.</p></li>
+          <li><strong>Shopping <span class="badge next">Available</span></strong><p>Get wardrobe-based suggestions and keep a personal shopping list.</p></li>
+          <li><strong>Calendar <span class="badge next">Available</span></strong><p>Save events and use them to get outfit recommendations.</p></li>
         </ul>
       </section>
       <section class="about-card" aria-labelledby="limits-title">
@@ -342,7 +528,7 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
         <div class="steps">
           <div class="step"><strong>Upload</strong><span>Choose a photo of one garment.</span></div>
           <div class="step"><strong>We suggest</strong><span>The scan suggests type, colour and pattern.</span></div>
-          <div class="step"><strong>You check</strong><span>Review and correct the fields.</span></div>
+          <div class="step"><strong>You check</strong><span>Review the fields and possible similar garments.</span></div>
           <div class="step"><strong>You save</strong><span>Add the garment to your wardrobe.</span></div>
         </div>
       </section>
@@ -363,10 +549,43 @@ select{width:100%;min-height:46px;padding:9px 12px;border:1px solid var(--line);
 const $ = id => document.getElementById(id);
 const nice = s => s ? s.replace(/_/g, " ") : "";
 let opts, scan;
+let latestDuplicateCheck = null;
+let calendarEvents = [];
+let calendarMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let selectedCalendarDate = dateInputValue(new Date());
+
+function dateInputValue(value){
+  return value.getFullYear() + "-" + String(value.getMonth() + 1).padStart(2, "0") +
+    "-" + String(value.getDate()).padStart(2, "0");
+}
+
+function dateFromInput(value){
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function formatCalendarDate(value, options){
+  return dateFromInput(value).toLocaleDateString(undefined, options || {
+    weekday: "long", year: "numeric", month: "long", day: "numeric"
+  });
+}
 
 function show(el, on){ el.hidden = !on; }
 function fail(msg){ $("err").textContent = msg; show($("err"), !!msg); }
 function level(c){ return c >= 0.8 ? "high" : c >= 0.5 ? "medium" : "low"; }
+function setError(id, msg){ $(id).textContent = msg; show($(id), !!msg); }
+
+async function loadOptions(){
+  if (!opts){
+    const data = await api("/api/options");
+    if (!data || !Array.isArray(data.subcategories) ||
+        !Array.isArray(data.colours) || !Array.isArray(data.patterns)){
+      throw new Error("The server returned invalid garment options.");
+    }
+    opts = data;
+  }
+  return opts;
+}
 
 async function api(url, o){
   const r = await fetch(url, o);
@@ -410,20 +629,38 @@ function render(r){
     makeField("subcategory", "Garment type", opts.subcategories, r.subcategory, true),
     makeField("colour", "Main colour", opts.colours, r.colour, false),
     makeField("pattern", "Pattern", opts.patterns, r.pattern, false));
+  renderDuplicateMatches($("scan-duplicates"), r.duplicates || [], r.compared_items || 0);
+  show($("scan-duplicates"), true);
   sync();
   show($("review"), true);
 }
 
 async function upload(file){
+  latestDuplicateCheck = null;
   fail(""); show($("review"), false); show($("busy"), true);
   $("preview").src = URL.createObjectURL(file);
   const fd = new FormData(); fd.append("file", file);
-  try { scan = await api("/api/wardrobe/scan", {method: "POST", body: fd}); render(scan); }
+  try {
+    await loadOptions();
+    scan = await api("/api/wardrobe/scan", {method: "POST", body: fd});
+    latestDuplicateCheck = {
+      itemId: scan.item_id,
+      matches: scan.duplicates || [],
+      comparedItems: scan.compared_items || 0
+    };
+    render(scan);
+  }
   catch(e){ fail(e.message); }
   show($("busy"), false);
 }
 
-function reset(){ scan = null; show($("review"), false); fail(""); $("file").value = ""; }
+function reset(clearDuplicateCheck = true){
+  scan = null; show($("review"), false); fail(""); $("file").value = "";
+  if (clearDuplicateCheck){
+    latestDuplicateCheck = null;
+    loadDuplicates();
+  }
+}
 
 $("drop").onclick = () => $("file").click();
 $("drop").onkeydown = e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); $("file").click(); } };
@@ -438,9 +675,482 @@ $("save").onclick = async () => {
     await api("/api/wardrobe/items", {method: "POST", headers: {"Content-Type": "application/json"},
       body: JSON.stringify({item_id: scan.item_id, subcategory: $("f-subcategory").value,
         colour: $("f-colour").value || null, pattern: $("f-pattern").value || null})});
-    reset(); loadItems();
+    reset(false); loadItems();
   } catch(e){ fail(e.message); }
 };
+
+function renderEmpty(root, title, text){
+  root.innerHTML = '<div class="empty-state"><h3>' + title + '</h3><p>' + text + '</p></div>';
+}
+
+function renderDuplicateMatches(root, matches, comparedItems){
+  root.replaceChildren();
+  const panel = document.createElement("div"); panel.className = "similarity-results";
+  const title = document.createElement("h3");
+  title.textContent = matches.length ? "Possible matches" : "No close matches found";
+  const note = document.createElement("p");
+  note.textContent = matches.length
+    ? "Review these saved garments before adding. Similarity is based on the photos and does not guarantee a duplicate."
+    : comparedItems
+      ? "No strong visual matches were found in your saved garments."
+      : "Save a garment first, and it will be included in future comparisons.";
+  panel.append(title, note);
+  if (matches.length){
+    const grid = document.createElement("div"); grid.className = "similarity-grid";
+    matches.forEach(match => {
+      const card = document.createElement("article"); card.className = "similarity-card";
+      const image = document.createElement("img"); image.src = match.image_url; image.alt = nice(match.subcategory || "Saved garment");
+      const details = document.createElement("div");
+      const type = document.createElement("b"); type.textContent = nice(match.subcategory || "Saved garment");
+      const attributes = document.createElement("span");
+      attributes.textContent = [match.colour, match.pattern].filter(Boolean).map(nice).join(", ") || "No colour or pattern";
+      const score = document.createElement("span");
+      score.textContent = Math.round(match.similarity * 100) + "% visual similarity";
+      details.append(type, attributes, score); card.append(image, details); grid.append(card);
+    });
+    panel.append(grid);
+  }
+  root.append(panel);
+}
+
+async function loadDuplicates(){
+  const root = $("duplicates-root");
+  if (latestDuplicateCheck){
+    renderDuplicateMatches(root, latestDuplicateCheck.matches, latestDuplicateCheck.comparedItems);
+    return;
+  }
+  const items = await api("/api/wardrobe/items");
+  if (!items.length){ renderDuplicateMatches(root, [], 0); return; }
+  const latest = items[items.length - 1];
+  const matches = await api("/api/duplicates/" + latest.item_id);
+  latestDuplicateCheck = {itemId: latest.item_id, matches, comparedItems: items.length - 1};
+  renderDuplicateMatches(root, matches, items.length - 1);
+}
+
+function renderEventOutfits(data){
+  const root = $("outfit-results");
+  root.replaceChildren();
+
+  const summary = document.createElement("section"); summary.className = "event-summary";
+  const heading = document.createElement("h2"); heading.textContent = data.event.occasion_label;
+  const details = document.createElement("p"); details.textContent =
+    data.event.description + " · " + data.event.location + " · " + data.event.date +
+    (data.event.time ? " at " + data.event.time : "");
+  const dress = document.createElement("p"); dress.className = "hint";
+  dress.textContent = "Dress code: " + nice(data.event.dress_code) + " · Setting: " + nice(data.event.setting);
+  summary.append(heading, details, dress);
+  root.append(summary);
+
+  if (data.weather){
+    const weather = document.createElement("section"); weather.className = "weather-summary";
+    const weatherHeading = document.createElement("h3"); weatherHeading.textContent =
+      "Forecast for " + data.weather.place;
+    const forecast = document.createElement("p");
+    const rainChance = data.weather.event_precipitation_chance == null
+      ? data.weather.precipitation_chance
+      : data.weather.event_precipitation_chance;
+    forecast.textContent = data.weather.description + " · " + data.weather.low_c + "–" +
+      data.weather.high_c + "°C" +
+      (data.weather.event_temperature_c == null ? "" : " · " + data.weather.event_temperature_c + "°C at event time") +
+      (rainChance == null ? "" : " · " + rainChance + "% chance of precipitation" +
+        (data.weather.event_precipitation_chance == null ? "" : " at event time"));
+    const source = document.createElement("p"); source.className = "hint";
+    source.append("Weather data: ");
+    const sourceLink = document.createElement("a"); sourceLink.href = "https://open-meteo.com/";
+    sourceLink.target = "_blank"; sourceLink.rel = "noopener noreferrer";
+    sourceLink.textContent = "Open-Meteo"; source.append(sourceLink);
+    weather.append(weatherHeading, forecast, source);
+    (data.weather_advice || []).forEach(text => {
+      const advice = document.createElement("p"); advice.className = "hint"; advice.textContent = text;
+      weather.append(advice);
+    });
+    root.append(weather);
+  } else if (data.weather_notice){
+    const weatherNotice = document.createElement("p"); weatherNotice.className = "banner warn";
+    weatherNotice.textContent = "Weather unavailable: " + data.weather_notice +
+      " Recommendations are still based on your event and wardrobe.";
+    root.append(weatherNotice);
+  }
+
+  if (data.recommendations && data.recommendations.length){
+    const grid = document.createElement("div"); grid.className = "outfit-grid";
+    data.recommendations.forEach(outfit => {
+      const card = document.createElement("article"); card.className = "outfit-card";
+      const title = document.createElement("h3"); title.textContent = outfit.title;
+      const reason = document.createElement("p"); reason.className = "hint"; reason.textContent = outfit.reason;
+      const pieces = document.createElement("div"); pieces.className = "outfit-pieces";
+      outfit.pieces.forEach(piece => {
+        const element = document.createElement("div"); element.className = "outfit-piece";
+        if (piece.image_url){
+          const image = document.createElement("img"); image.src = piece.image_url;
+          image.alt = nice(piece.subcategory || "Saved garment"); element.append(image);
+        }
+        const label = document.createElement("span");
+        label.textContent = [piece.subcategory, piece.colour, piece.pattern].filter(Boolean).map(nice).join(" · ");
+        element.append(label); pieces.append(element);
+      });
+      card.append(title, reason, pieces); grid.append(card);
+    });
+    root.append(grid);
+  } else {
+    renderEmpty(root, "Add a few wardrobe pieces", data.wardrobe_note || "Save a top and bottom, or a dress, to get outfit combinations.");
+  }
+
+  const inspiration = document.createElement("a");
+  inspiration.className = "external-link"; inspiration.href = data.inspiration_url;
+  inspiration.target = "_blank"; inspiration.rel = "noopener noreferrer";
+  inspiration.textContent = "Explore this event on Pinterest";
+  root.append(inspiration);
+}
+
+$("outfit-form").addEventListener("submit", async event => {
+  event.preventDefault();
+  const button = $("recommend-outfits");
+  const error = $("outfit-error");
+  error.textContent = ""; show(error, false);
+  button.disabled = true; button.textContent = "Building your suggestions…";
+  try {
+    const data = await api("/api/outfits/recommendations", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        description: $("event-description").value.trim(),
+        location: $("event-location").value.trim(),
+        event_date: $("event-date").value,
+        event_time: $("event-time").value || null,
+        dress_code: $("event-dress-code").value,
+        setting: $("event-setting").value
+      })
+    });
+    renderEventOutfits(data);
+  } catch(e) {
+    error.textContent = e.message;
+    show(error, true);
+  } finally {
+    button.disabled = false; button.textContent = "Recommend outfits";
+  }
+});
+
+async function loadShoppingAdvice(){
+  const root = $("shopping-root");
+  try {
+    const data = await api("/api/shopping/advice");
+    const advice = data.advice || [];
+    root.replaceChildren();
+    if (!advice.length){
+      renderEmpty(root, "No suggestions right now", "Your wardrobe looks balanced. Add more garments to refresh these suggestions.");
+      return;
+    }
+    advice.forEach(item => {
+      const card = document.createElement("article"); card.className = "shopping-advice-card";
+      const title = document.createElement("strong"); title.textContent = item.title;
+      const badge = document.createElement("span"); badge.className = "badge";
+      badge.textContent = (item.priority || "medium").toUpperCase();
+      const detail = document.createElement("p"); detail.textContent = item.detail;
+      const add = document.createElement("button"); add.type = "button";
+      add.className = "btn btn-ghost ghost"; add.textContent = "Add to shopping list";
+      add.onclick = () => addShoppingItem(item.title, item.detail);
+      card.append(title, badge, detail, add);
+      root.append(card);
+    });
+  } catch(e) {
+    renderEmpty(root, "Shopping advice unavailable", e.message);
+  }
+}
+
+function renderShoppingList(items){
+  const root = $("shopping-list");
+  root.replaceChildren();
+  if (!items.length){
+    renderEmpty(root, "Your list is empty", "Add a suggestion or write down something you want to buy.");
+    return;
+  }
+  items.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "shopping-list-item" + (item.done ? " done" : "");
+    const checkbox = document.createElement("input"); checkbox.type = "checkbox";
+    checkbox.className = "shopping-check"; checkbox.checked = item.done;
+    checkbox.setAttribute("aria-label", "Mark " + item.title + (item.done ? " as not bought" : " as bought"));
+    checkbox.onchange = async () => {
+      try {
+        await api("/api/shopping/list/" + item.id, {
+          method: "PATCH", headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({done: checkbox.checked})
+        });
+        setError("shopping-error", "");
+        await loadShoppingList();
+      } catch(e) {
+        checkbox.checked = item.done;
+        setError("shopping-error", e.message);
+      }
+    };
+    const copy = document.createElement("div"); copy.className = "shopping-item-copy";
+    const title = document.createElement("strong"); title.textContent = item.title;
+    copy.append(title);
+    if (item.detail){
+      const detail = document.createElement("span"); detail.textContent = item.detail;
+      copy.append(detail);
+    }
+    const remove = document.createElement("button"); remove.type = "button";
+    remove.className = "btn btn-ghost ghost"; remove.textContent = "Remove";
+    remove.onclick = async () => {
+      try {
+        await api("/api/shopping/list/" + item.id, {method: "DELETE"});
+        setError("shopping-error", "");
+        await loadShoppingList();
+      } catch(e) {
+        setError("shopping-error", e.message);
+      }
+    };
+    row.append(checkbox, copy, remove);
+    root.append(row);
+  });
+}
+
+async function loadShoppingList(){
+  try {
+    const items = await api("/api/shopping/list");
+    renderShoppingList(items);
+  } catch(e) {
+    setError("shopping-error", e.message);
+  }
+}
+
+async function addShoppingItem(title, detail, clearForm){
+  try {
+    await api("/api/shopping/list", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({title, detail})
+    });
+    if (clearForm){
+      $("shopping-title-input").value = "";
+      $("shopping-detail-input").value = "";
+    }
+    setError("shopping-error", "");
+    await loadShoppingList();
+  } catch(e) {
+    setError("shopping-error", e.message);
+  }
+}
+
+$("shopping-form").addEventListener("submit", async event => {
+  event.preventDefault();
+  await addShoppingItem($("shopping-title-input").value.trim(), $("shopping-detail-input").value.trim(), true);
+});
+
+function renderCalendar(){
+  const year = calendarMonth.getFullYear();
+  const month = calendarMonth.getMonth();
+  $("calendar-month-label").textContent = calendarMonth.toLocaleDateString(undefined, {
+    month: "long", year: "numeric"
+  });
+  const grid = $("calendar-grid");
+  grid.replaceChildren();
+  ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach(day => {
+    const heading = document.createElement("div");
+    heading.className = "calendar-weekday";
+    heading.setAttribute("role", "columnheader");
+    heading.textContent = day;
+    grid.append(heading);
+  });
+
+  const start = new Date(year, month, 1 - new Date(year, month, 1).getDay());
+  const today = dateInputValue(new Date());
+  for (let i = 0; i < 42; i++){
+    const current = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+    const key = dateInputValue(current);
+    const matches = calendarEvents.filter(item => item.event_date === key);
+    const day = document.createElement("button");
+    day.type = "button";
+    day.className = "calendar-day" +
+      (current.getMonth() === month ? "" : " other-month") +
+      (key === selectedCalendarDate ? " selected" : "") +
+      (key === today ? " today" : "");
+    day.setAttribute("role", "gridcell");
+    day.setAttribute("aria-pressed", key === selectedCalendarDate ? "true" : "false");
+    day.setAttribute("aria-label", formatCalendarDate(key) +
+      (matches.length ? ", " + matches.length + " event" + (matches.length === 1 ? "" : "s") : ""));
+    const number = document.createElement("span"); number.className = "calendar-day-number";
+    number.textContent = current.getDate();
+    day.append(number);
+    matches.slice(0, 2).forEach(item => {
+      const label = document.createElement("span"); label.className = "calendar-day-event";
+      label.textContent = item.title;
+      day.append(label);
+    });
+    if (matches.length > 2){
+      const more = document.createElement("span"); more.className = "calendar-day-event";
+      more.textContent = "+" + (matches.length - 2) + " more";
+      day.append(more);
+    }
+    day.onclick = () => {
+      selectedCalendarDate = key;
+      if (!$("calendar-event-id").value) $("calendar-event-date").value = key;
+      if (current.getMonth() !== month){
+        calendarMonth = new Date(current.getFullYear(), current.getMonth(), 1);
+      }
+      renderCalendar();
+      renderCalendarAgenda();
+    };
+    grid.append(day);
+  }
+}
+
+function renderCalendarAgenda(){
+  $("calendar-agenda-title").textContent = formatCalendarDate(selectedCalendarDate);
+  const root = $("calendar-agenda-events");
+  root.replaceChildren();
+  const events = calendarEvents.filter(item => item.event_date === selectedCalendarDate);
+  if (!events.length){
+    const empty = document.createElement("p"); empty.className = "hint";
+    empty.textContent = "No events on this day yet.";
+    root.append(empty);
+    return;
+  }
+  events.forEach(item => {
+    const row = document.createElement("article"); row.className = "calendar-event-row";
+    const copy = document.createElement("div"); copy.className = "calendar-event-copy";
+    const title = document.createElement("strong"); title.textContent = item.title;
+    const details = [item.event_time, item.location, item.description].filter(Boolean).join(" · ");
+    const detail = document.createElement("span"); detail.textContent = details || "No extra details";
+    copy.append(title, detail);
+    const actions = document.createElement("div"); actions.className = "calendar-actions";
+    const edit = document.createElement("button"); edit.type = "button";
+    edit.className = "btn btn-ghost ghost"; edit.textContent = "Edit";
+    edit.onclick = () => editCalendarEvent(item);
+    const recommend = document.createElement("button"); recommend.type = "button";
+    recommend.className = "btn"; recommend.textContent = "Plan outfit";
+    recommend.onclick = () => recommendCalendarEvent(item);
+    const remove = document.createElement("button"); remove.type = "button";
+    remove.className = "btn btn-ghost ghost"; remove.textContent = "Delete";
+    remove.onclick = () => deleteCalendarEvent(item);
+    actions.append(edit, recommend, remove);
+    row.append(copy, actions);
+    root.append(row);
+  });
+}
+
+function resetCalendarForm(date){
+  $("calendar-event-form").reset();
+  $("calendar-event-id").value = "";
+  $("calendar-event-date").value = date || selectedCalendarDate;
+  $("calendar-form-title").textContent = "Add event";
+  $("calendar-save").textContent = "Save event";
+  show($("calendar-cancel"), false);
+  setError("calendar-error", "");
+}
+
+function editCalendarEvent(item){
+  $("calendar-event-id").value = item.id;
+  $("calendar-event-name").value = item.title;
+  $("calendar-event-date").value = item.event_date;
+  $("calendar-event-time").value = item.event_time || "";
+  $("calendar-event-location").value = item.location || "";
+  $("calendar-event-description").value = item.description || "";
+  $("calendar-event-dress-code").value = item.dress_code || "auto";
+  $("calendar-event-setting").value = item.setting || "auto";
+  $("calendar-form-title").textContent = "Edit event";
+  $("calendar-save").textContent = "Save changes";
+  show($("calendar-cancel"), true);
+  $("calendar-event-name").focus();
+}
+
+async function loadCalendarEvents(){
+  try {
+    calendarEvents = await api("/api/calendar/events");
+    renderCalendar();
+    renderCalendarAgenda();
+    setError("calendar-error", "");
+  } catch(e) {
+    setError("calendar-error", e.message);
+  }
+}
+
+async function deleteCalendarEvent(item){
+  try {
+    await api("/api/calendar/events/" + item.id, {method: "DELETE"});
+    if ($("calendar-event-id").value === item.id) resetCalendarForm(selectedCalendarDate);
+    await loadCalendarEvents();
+  } catch(e) {
+    setError("calendar-error", e.message);
+  }
+}
+
+function recommendCalendarEvent(item){
+  $("event-description").value = ("Event: " + item.title +
+    (item.description ? ". " + item.description : "")).slice(0, 500);
+  $("event-location").value = item.location || "Tunis";
+  $("event-date").value = item.event_date;
+  $("event-time").value = item.event_time || "";
+  $("event-dress-code").value = item.dress_code || "auto";
+  $("event-setting").value = item.setting || "auto";
+  location.hash = "#outfits";
+  $("outfit-form").requestSubmit();
+}
+
+$("calendar-event-form").addEventListener("submit", async event => {
+  event.preventDefault();
+  const id = $("calendar-event-id").value;
+  const payload = {
+    title: $("calendar-event-name").value.trim(),
+    event_date: $("calendar-event-date").value,
+    event_time: $("calendar-event-time").value || null,
+    location: $("calendar-event-location").value.trim() || null,
+    description: $("calendar-event-description").value.trim(),
+    dress_code: $("calendar-event-dress-code").value,
+    setting: $("calendar-event-setting").value
+  };
+  try {
+    await api(id ? "/api/calendar/events/" + id : "/api/calendar/events", {
+      method: id ? "PUT" : "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    });
+    selectedCalendarDate = payload.event_date;
+    calendarMonth = new Date(dateFromInput(selectedCalendarDate).getFullYear(),
+      dateFromInput(selectedCalendarDate).getMonth(), 1);
+    resetCalendarForm(selectedCalendarDate);
+    await loadCalendarEvents();
+  } catch(e) {
+    setError("calendar-error", e.message);
+  }
+});
+
+$("calendar-event-date").addEventListener("change", event => {
+  if (!event.target.value) return;
+  selectedCalendarDate = event.target.value;
+  const selected = dateFromInput(selectedCalendarDate);
+  calendarMonth = new Date(selected.getFullYear(), selected.getMonth(), 1);
+  renderCalendar();
+  renderCalendarAgenda();
+});
+
+$("calendar-prev").onclick = () => {
+  calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1, 1);
+  renderCalendar();
+};
+$("calendar-next").onclick = () => {
+  calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 1);
+  renderCalendar();
+};
+$("calendar-today").onclick = () => {
+  selectedCalendarDate = dateInputValue(new Date());
+  calendarMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+  if (!$("calendar-event-id").value) $("calendar-event-date").value = selectedCalendarDate;
+  renderCalendar();
+  renderCalendarAgenda();
+};
+$("calendar-new-event").onclick = () => {
+  resetCalendarForm(selectedCalendarDate);
+  $("calendar-event-name").focus();
+};
+$("calendar-cancel").onclick = () => resetCalendarForm(selectedCalendarDate);
+
+function initCalendar(){
+  resetCalendarForm(selectedCalendarDate);
+  renderCalendar();
+  renderCalendarAgenda();
+}
 
 async function loadItems(){
   const items = await api("/api/wardrobe/items");
@@ -453,14 +1163,35 @@ async function loadItems(){
     const s = document.createElement("span");
     s.textContent = [it.colour.value, it.pattern.value].filter(Boolean).map(nice).join(", ") || "No colour or pattern";
     const x = document.createElement("button"); x.textContent = "Remove";
-    x.onclick = async () => { await api("/api/wardrobe/items/" + it.item_id, {method: "DELETE"}); loadItems(); };
+    x.onclick = async () => {
+      await api("/api/wardrobe/items/" + it.item_id, {method: "DELETE"});
+      if (latestDuplicateCheck && (latestDuplicateCheck.itemId === it.item_id ||
+          latestDuplicateCheck.matches.some(match => match.item_id === it.item_id))){
+        latestDuplicateCheck = null;
+      }
+      loadItems();
+    };
     d.append(t, s, x); card.append(img, d); g.append(card);
   });
   $("count").textContent = items.length ? "(" + items.length + ")" : "";
   show($("empty"), !items.length);
+  loadDuplicates();
+  loadShoppingAdvice();
 }
 
-(async () => { opts = await api("/api/options"); loadItems(); })();
+const localToday = new Date();
+localToday.setMinutes(localToday.getMinutes() - localToday.getTimezoneOffset());
+$("event-date").value = localToday.toISOString().slice(0, 10);
+initCalendar();
+
+(async () => {
+  try {
+    await loadOptions();
+    await Promise.all([loadItems(), loadShoppingList(), loadCalendarEvents()]);
+  } catch(e) {
+    fail("Could not load app data: " + e.message);
+  }
+})();
 </script>
 <script>
 (() => {

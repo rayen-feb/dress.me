@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local application and research data
+data/
+dso1/
+
+# Editor and operating-system files
+.vscode/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Local logs and environment files
+*.log
+.env
+.env.*
+!.env.example
